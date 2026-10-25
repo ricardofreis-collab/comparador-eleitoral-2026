@@ -18,17 +18,19 @@ setImmediate(async()=>{
  assert.equal(elements.get('ex-flavio2').textContent,'38.532');
  assert.equal(elements.get('countries').children.length,37);
  const share=(l,f)=>(100*l/(l+f)).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'%';
- assert.equal(elements.get('ex-lula-share1').textContent,share(22389,32682));
+ assert.equal(elements.get('ex-lula-share1').textContent,share(157387,330882-157387));
  assert.equal(elements.get('ex-lula-share2').textContent,share(26786,38532));
  assert.equal(elements.get('ex-flavio-share2').textContent,share(38532,26786));
- assert.match(elements.get('ex-share-summary').textContent,/Lula ganhou.*p\.p\./);
- assert.equal(elements.get('ex-share-bar1').children.length,2);
+ assert.match(elements.get('ex-share-summary').textContent,/exterior completo no 1º turno/);
+ assert.equal(elements.get('ex-share-bar1').children.length,3);
+ assert.equal(elements.get('ex-flavio-share1').textContent,share(143900,330882-143900));
+ assert.match(elements.get('ex-lula-pp').textContent,/-6,56 p\.p\./);
  const originalShare=elements.get('ex-lula-share2').textContent;
  exterior.countries.push({pais:'PAÍS DE TESTE',primeiro:{lula:1000,flavio:0},segundo:{lula:0,flavio:1000}});
  await intervals[0].fn();
- assert.equal(elements.get('ex-lula-share1').textContent,share(23389,32682));
+ assert.equal(elements.get('ex-lula-share1').textContent,share(157387,330882-157387));
  assert.equal(elements.get('ex-lula-share2').textContent,share(26786,39532));
- assert.match(elements.get('ex-share-summary').textContent,/Flávio Bolsonaro ganhou/);
+ assert.match(elements.get('ex-share-summary').textContent,/cobertura geográfica é diferente/);
  exterior.countries.pop();await intervals[0].fn();
  assert.equal(elements.get('ex-lula-share2').textContent,originalShare);
 

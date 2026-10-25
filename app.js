@@ -39,7 +39,15 @@ function voteShare(lula, flavio) {
   if (!Number.isSafeInteger(total) || total === 0) return null;
   return {lula: 100 * lula / total, flavio: 100 * flavio / total};
 }
-const api={integer,parseTSE,match,validateExterior,voteShare};
+// Verified TSE snapshot: dados/exterior-primeiro-oficial.json (6257 / ZZ / 1º turno).
+// The first-round denominator includes every candidate, not just these two.
+const exteriorFirst={lula:157387,flavio:143900,validVotes:330882};
+function firstRoundShares(d) {
+  const total=integer(d.validVotes),l=integer(d.lula),f=integer(d.flavio);
+  if(!total || l+f>total) throw Error('Base oficial do primeiro turno inválida');
+  return {lula:100*l/total,flavio:100*f/total,others:100*(total-l-f)/total};
+}
+const api={integer,parseTSE,match,validateExterior,voteShare,firstRoundShares};
 if(typeof module !== 'undefined') module.exports=api;
 root.Election=api;
 if(typeof document==='undefined') return;
@@ -54,17 +62,16 @@ function chart(id,a,b){
 const percent=n=>n==null?'—':n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'%';
 const points=n=>(n>0?'+':'')+n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+' p.p.';
 function showParticipation(sums, count) {
-  const first=voteShare(sums.primeirolula,sums.primeiroflavio), second=voteShare(sums.segundolula,sums.segundoflavio);
+  const first=firstRoundShares(exteriorFirst),second=voteShare(sums.segundolula,sums.segundoflavio);
   for(const [i,share] of [first,second].entries()) {
     for(const k of candidates) $('ex-'+k+'-share'+(i+1)).textContent=percent(share?.[k]);
     const host=$('ex-share-bar'+(i+1));host.replaceChildren();
     if(!share){host.textContent='Aguardando votos disponíveis';$('ex-share-label'+(i+1)).textContent='Aguardando percentuais';continue;}
-    for(const k of candidates){const segment=document.createElement('div');segment.className='share-segment share-'+k;segment.style.width=share[k]+'%';host.append(segment);}
-    $('ex-share-label'+(i+1)).textContent='Lula '+percent(share.lula)+' · Flávio '+percent(share.flavio);
+    for(const k of [...candidates,...(i===0?['others']:[])]){const segment=document.createElement('div');segment.className='share-segment share-'+k;segment.style.width=share[k]+'%';host.append(segment);}
+    $('ex-share-label'+(i+1)).textContent='Lula '+percent(share.lula)+' · Flávio '+percent(share.flavio)+(i===0?' · Outros '+percent(share.others):' · '+count+' países monitorados');
   }
-  for(const k of candidates) $('ex-'+k+'-pp').textContent=first&&second?points(second[k]-first[k]):'Aguardando os dois turnos';
-  const delta=first&&second?second.lula-first.lula:null;
-  $('ex-share-summary').textContent=delta==null?'Aguardando votos comparáveis nos dois turnos.':Math.abs(delta)<0.005?'Sem mudança de participação na precisão de 0,01 ponto percentual.':(delta>0?'Lula':'Flávio Bolsonaro')+' ganhou '+points(Math.abs(delta)).replace('+','')+' de participação entre os dois candidatos, nos mesmos '+count+' países.';
+  for(const k of candidates) $('ex-'+k+'-pp').textContent=second?points(second[k]-first[k])+' em relação à referência':'Aguardando parcial do 2º turno';
+  $('ex-share-summary').textContent=second?'Referência: exterior completo no 1º turno. Agora: parcial de '+count+' países no 2º turno. As diferenças são provisórias: a cobertura geográfica é diferente e muda com a entrada de países.':'Referência oficial do 1º turno disponível; aguardando a parcial do 2º turno.';
 }
 let exteriorBusy=false;
 async function exterior(){

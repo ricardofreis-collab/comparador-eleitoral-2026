@@ -22,3 +22,12 @@ const before=voteShare(40,60),after=voteShare(55,45);
 assert.equal(after.lula-before.lula,15);
 assert.equal(after.flavio-before.flavio,-15);
 console.log('Participação verificada: base, ausência, zero publicado, ganho e perda em pontos percentuais');
+
+const {firstRoundShares}=require('../app.js');
+const official=JSON.parse(fs.readFileSync('dados/exterior-primeiro-oficial.json'));
+assert.equal(official.ele,'6257');assert.equal(official.t,'1');assert.equal(official.cdabr,'zz');assert.equal(official.s.st,official.s.ts);
+const cc=official.carg[0].agr.flatMap(a=>a.par.flatMap(p=>p.cand));
+const shares=firstRoundShares({lula:Number(cc.find(c=>c.n==='13').vap),flavio:Number(cc.find(c=>c.n==='22').vap),validVotes:Number(official.v.vv)});
+assert.equal(shares.lula.toFixed(2),'47.57');assert.equal(shares.flavio.toFixed(2),'43.49');assert.equal(shares.others.toFixed(2),'8.94');
+assert.throws(()=>firstRoundShares({lula:60,flavio:50,validVotes:100}));
+console.log('Primeiro turno oficial conferido: total de votos válidos com todos os candidatos');

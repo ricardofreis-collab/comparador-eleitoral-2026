@@ -36,4 +36,8 @@ CNN Brasil: vídeo `o6Z6Ax_XVsY`, identificado na página oficial https://www.cn
 
 ## Participação no exterior
 
-Percentuais comparam Lula/(Lula+Flávio) e Flávio/(Lula+Flávio), sempre nos países com os dois turnos. Outros candidatos do primeiro turno não estão no denominador. A variação é calculada antes do arredondamento e exibida em pontos percentuais, com duas casas decimais. Somar 100% entre os dois não indica apuração completa; a reportagem não fornece cobertura consolidada do exterior. Países novos atualizam simultaneamente a base dos dois turnos. Base sem votos é indisponível, não 0%.
+A referência do primeiro turno é o exterior completo no TSE: Lula 157.387, Flávio 143.900, total de 330.882 votos válidos, incluindo os demais candidatos. O JSON oficial completo está preservado em `dados/exterior-primeiro-oficial.json`; a aplicação usa esses valores verificados para calcular os percentuais (47,57% e 43,49%). A referência é um snapshot final, com 100% das seções totalizadas, arquivo de 24/10/2026 às 20:12:57.
+
+A parcial do segundo turno usa os votos coletados pelo Poder360 nos países monitorados e calcula candidato/(Lula+Flávio)*100. As diferenças em p.p. são provisórias em relação ao primeiro turno completo: as bases geográficas são distintas, e o primeiro turno inclui outros candidatos. O site informa essa diferença e não declara ganho consolidado de preferência. Os contadores absolutos e seu gráfico continuam comparando somente países iguais com os dois turnos disponíveis.
+
+Somar 100% entre os dois não indica apuração completa do exterior; a reportagem não fornece esse percentual consolidado. Base parcial sem votos é indisponível, não 0%.
