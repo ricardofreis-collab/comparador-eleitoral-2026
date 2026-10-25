@@ -6,3 +6,13 @@ body{max-width:1540px}.watch-layout{display:grid;grid-template-columns:minmax(0,
 .share-counts{display:grid;grid-template-columns:1fr 1fr;gap:12px;border-top:1px solid #3b5068;padding-top:16px;margin-top:16px}.share-counts strong{display:block;font-size:1.65rem;font-variant-numeric:tabular-nums}.share-counts small{display:block;min-height:3.2em}.share-change{font-weight:700;font-size:1.15rem}.share-comparison{background:#0c1928;border:1px solid #33475e;border-radius:12px;padding:18px;margin:22px 0}.share-track{display:flex;min-height:24px;border-radius:5px;overflow:hidden;background:#23364d}.share-segment{height:24px}.share-lula{background:#ffb1b8}.share-flavio{background:#96c9ff}#ex-share-summary{font-weight:700;color:#e7d1a9}
 
 .share-others{background:#b8b1a9}.share-comparison .candidates{grid-template-columns:1fr}.share-comparison .share-counts{margin-top:0;border-top:0;padding-top:0}
+
+/* Labels share one grid row, so both percentages keep the same baseline. */
+.share-counts{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto auto;column-gap:16px;row-gap:8px;align-items:start}
+.share-counts>div{display:contents}
+.share-counts>div:first-child>*{grid-column:1}
+.share-counts>div:nth-child(2)>*{grid-column:2}
+.share-counts small{grid-row:1;min-height:0;line-height:1.45}
+.share-counts small span{display:block}
+.share-counts strong{grid-row:2;align-self:baseline;line-height:1.2;white-space:nowrap;font-size:clamp(1.4rem,3vw,1.85rem);font-variant-numeric:tabular-nums}
+.share-change{margin-top:18px}
