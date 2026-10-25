@@ -6,8 +6,8 @@ async function load(){try{let r=await fetch(URLS[0],{cache:'no-store'});if(!r.ok
 </script><script>
 async function preliminary(){
 try{
-const r=await fetch('comparacao_exterior.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('Sem arquivo');
-const d=await r.json();if(d.status!=='ok'||!Array.isArray(d.countries)||!d.countries.length){$('gainstatus').textContent='Aguardando primeira coleta validada';return}
+const r=await fetch('https://raw.githubusercontent.com/ricardofreis-collab/comparador-eleitoral-2026/main/comparacao_exterior.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('Sem arquivo');
+const d=await r.json();if(d.status!=='ok'||!Array.isArray(d.countries)||!d.countries.length){$('gainstatus').textContent='Aguardando resultados comparáveis validados pelo coletor';return}
 const sum=(round,key)=>d.countries.reduce((s,x)=>s+x[(round==='first'?'primeiro':'segundo')][key],0);
 const l1=sum('first','lula'),l2=sum('second','lula'),f1=sum('first','flavio'),f2=sum('second','flavio');
 const fmt=n=>n.toLocaleString('pt-BR');
@@ -19,7 +19,7 @@ $('gainstatus').textContent='Votos adicionais • '+d.countries.length+' países
 const canvas=$('chart'),ctx=canvas.getContext('2d');ctx.clearRect(0,0,canvas.width,canvas.height);
 const vals=[dl,df],max=Math.max(...vals.map(Math.abs),1);ctx.font='17px system-ui';
 vals.forEach((v,i)=>{let y=50+i*90;ctx.fillStyle='#eef2fa';ctx.fillText((i?'Flávio':'Lula')+' '+(v>=0?'+':'')+fmt(v),12,y);ctx.fillStyle=i?'#ffbe78':'#76c9ff';ctx.fillRect(12,y+12,Math.round(Math.abs(v)/max*700),27)});
-}catch(e){$('gainstatus').textContent='Coleta preliminar ainda não disponível'}
+}catch(e){$('gainstatus').textContent='Coleta preliminar indisponível; nenhuma diferença foi estimada'}
 }
 preliminary();setInterval(preliminary,30000);
 </script></html>
