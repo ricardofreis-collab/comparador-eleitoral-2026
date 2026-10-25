@@ -19,6 +19,7 @@ jobs:
           python-version: '3.12'
       - run: pip install -r requirements.txt
       - run: python -m unittest discover -s tests -v
+      - run: node tests/test_app.cjs && node tests/test_integration.cjs
       - id: collect
         continue-on-error: true
         run: python scripts/coletar_preliminares.py

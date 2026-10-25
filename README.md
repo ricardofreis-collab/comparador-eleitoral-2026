@@ -19,6 +19,7 @@ Somente este repositório pertence a este trabalho. Não modificar projetos da R
 pip install -r requirements.txt
 python -m unittest discover -s tests -v
 node tests/test_app.cjs
+node tests/test_integration.cjs
 python scripts/coletar_preliminares.py
 python scripts/comparar_paises.py
 ```
@@ -26,3 +27,5 @@ python scripts/comparar_paises.py
 Fixtures são trechos reais da reportagem e JSON do TSE obtidos em 25/10/2026. Os testes cobrem ordem dos turnos, descoberta de países, dados ausentes, zeros publicados, perdas, duplicação, preservação na falha e equivalência exata de seções.
 
 Hospedagem: site estático existente no Render; deploy manual, automático desligado. Nenhum novo serviço, banco ou plano pago é necessário. GitHub Actions com agenda de cinco minutos não oferece SLA de pontualidade. Não foram configurados gastos adicionais.
+
+Validação nesta sessão: coleta real e workflow concluídos com sucesso; arquivos publicados e execução do JavaScript publicado verificados por HTTP e DOM de teste. Testes visuais no Safari, iPhone e Mac reais permanecem pendentes por falta de acesso a esses dispositivos.
