@@ -1,0 +1,22 @@
+name: Consultar boletins preliminares
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/5 * * * *'
+permissions:
+  contents: write
+jobs:
+  consult:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/coletar_preliminares.py
+      - name: Registrar estado da consulta
+        run: |
+          git config user.name "comparador-bot"
+          git config user.email "comparador-bot@users.noreply.github.com"
+          git add preliminares.json
+          git diff --cached --quiet || (git commit -m "Registrar consulta preliminar" && git push)
