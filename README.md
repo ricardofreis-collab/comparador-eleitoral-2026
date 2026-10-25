@@ -32,7 +32,7 @@ Validação nesta sessão: coleta real e workflow concluídos com sucesso; arqui
 
 ## Transmissão incorporada
 
-CNN Brasil: vídeo `o6Z6Ax_XVsY`, identificado na página oficial https://www.cnnbrasil.com.br/ em 25/10/2026. Player oficial do YouTube em domínio nocookie, com áudio inicialmente desativado, controles e tela cheia. Em telas largas aparece ao lado dos resultados; em telas menores, acima deles. A atualização dos votos não recarrega o iframe. Caso a emissora encerre ou restrinja a live, o painel oferece links para o vídeo, a página ao vivo e o canal oficial. Não há retransmissão nem cópia do sinal.
+Transmissão selecionada pelo usuário: https://www.youtube.com/live/wwLxIO0zTP8. Player oficial do YouTube em domínio nocookie, com áudio inicialmente desativado, controles e tela cheia. Em telas largas aparece ao lado dos resultados; em telas menores, acima deles. A atualização dos votos não recarrega o iframe. Caso o canal encerre ou restrinja a live, o painel oferece link para abrir o vídeo diretamente no YouTube. Não há retransmissão nem cópia do sinal.
 
 ## Participação no exterior
 
