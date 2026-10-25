@@ -40,5 +40,14 @@ setImmediate(async()=>{
  await intervals[1].fn();assert.equal(elements.get('ex-lula2').textContent,'26.786');
  fail=true;await intervals[0].fn();assert.equal(elements.get('ex-lula2').textContent,'26.786');assert.match(elements.get('ex-status').textContent,/Falha/);
  assert.ok(calls.filter(u=>u.includes('/6258/')).length===2);
+ assert.equal(elements.get('br-lula-share2').textContent,'—');
+ fail=false;Object.assign(second,JSON.parse(fs.readFileSync('tests/fixtures/tse-segundo-parcial.json')));
+ await intervals[1].fn();
+ assert.equal(elements.get('br-lula-share2').textContent,'52,14%');
+ assert.equal(elements.get('br-flavio-share2').textContent,'47,86%');
+ assert.equal(elements.get('br-lula-share1').textContent,'—');
+ assert.match(elements.get('br-status').textContent,/seções totalizadas/);
+ assert.equal(elements.get('ex-lula2').textContent,'26.786');
+
  console.log('Integração aprovada: quatro contadores, 37 países, TSE separado, intervalos, atualização e preservação na falha');
 });

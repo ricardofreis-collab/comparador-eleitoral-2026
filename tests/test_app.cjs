@@ -31,3 +31,11 @@ const shares=firstRoundShares({lula:Number(cc.find(c=>c.n==='13').vap),flavio:Nu
 assert.equal(shares.lula.toFixed(2),'47.57');assert.equal(shares.flavio.toFixed(2),'43.49');assert.equal(shares.others.toFixed(2),'8.94');
 assert.throws(()=>firstRoundShares({lula:60,flavio:50,validVotes:100}));
 console.log('Primeiro turno oficial conferido: total de votos válidos com todos os candidatos');
+
+const partial=JSON.parse(fs.readFileSync('tests/fixtures/tse-segundo-parcial.json'));
+const parsedPartial=parseTSE(partial,2);
+assert.equal(parsedPartial.validVotes,2023426);
+assert.equal(firstRoundShares(parsedPartial).lula.toFixed(2),'52.14');
+const noDenominator=structuredClone(partial);delete noDenominator.v.vv;
+assert.throws(()=>parseTSE(noDenominator,2));
+console.log('TSE parcial real: percentuais sobre votos válidos, sem confundir com percentual de seções');

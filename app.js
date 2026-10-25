@@ -15,8 +15,10 @@ function parseTSE(d, round) {
   const sections = integer(d.s?.st), totalSections = integer(d.s?.ts);
   if (!totalSections || sections > totalSections || !d.dg || !d.hg) throw Error('Totalização/horário inválido');
   const lula=get('13'), flavio=get('22');
-  if (!sections && (lula || flavio)) throw Error('Votos sem seções totalizadas');
-  return {round, sections, totalSections, lula, flavio, sourceTime: d.dg+' '+d.hg, checkedAt: new Date().toISOString()};
+  const validVotes=integer(d.v?.vv);
+  if (lula+flavio>validVotes) throw Error('Votos dos candidatos excedem o total válido');
+  if (!sections && (lula || flavio || validVotes)) throw Error('Votos sem seções totalizadas');
+  return {round, sections, totalSections, lula, flavio, validVotes, sourceTime: d.dg+' '+d.hg, checkedAt: new Date().toISOString()};
 }
 function match(first, second) {
   if (!second?.sections) return null;
@@ -103,6 +105,12 @@ async function national(){
   $('br-status').textContent=second.sections?'TSE oficial • '+percentage+'% das seções totalizadas':'TSE oficial • aguardando início da totalização';
   $('br-time').textContent='Arquivo do TSE: '+second.sourceTime+'. Consulta: '+time(second.checkedAt);
   for(const k of candidates){$('br-'+k+'2').textContent=second.sections?fmt(second[k]):'—';$('br-'+k+'1').textContent=paired?fmt(paired[k]):'—';$('br-'+k+'-delta').textContent=paired?signed(second[k]-paired[k])+' votos':'Aguardando histórico no mesmo percentual';}
+  const currentShare=second.sections&&second.validVotes?firstRoundShares(second):null;
+  const previousShare=paired?.validVotes?firstRoundShares(paired):null;
+  for(const k of candidates){
+    $('br-'+k+'-share1').textContent=percent(previousShare?.[k]);
+    $('br-'+k+'-share2').textContent=percent(currentShare?.[k]);
+  }
   $('br-note').textContent=paired?'Comparação no mesmo percentual exato de seções totalizadas.':'Sem amostra do 1º turno no percentual atual. O arquivo disponível do 1º turno está em '+(100*first.sections/first.totalSections).toLocaleString('pt-BR')+'%. Não interpolamos nem escalamos votos. A comparação será possível a 100% ou com histórico equivalente validado.';
   chart('br-chart',paired?second.lula-paired.lula:null,paired?second.flavio-paired.flavio:null);
  }catch(e){$('br-status').textContent='Consulta ao TSE indisponível: '+e.message+'. Últimos dados exibidos foram mantidos.';}finally{nationalBusy=false;}
