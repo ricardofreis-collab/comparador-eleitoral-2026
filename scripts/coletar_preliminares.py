@@ -1,21 +1,15 @@
 #!/usr/bin/env python3
-"""Conservative preliminary news collector. Never invent missing values."""
-import json,re,urllib.request,datetime,pathlib,html
-URL="https://www.cnnbrasil.com.br/internacional/eleicoes-2026-exterior-boletins-urna-flavio-lula/"
-req=urllib.request.Request(URL,headers={"User-Agent":"ComparadorEleitoral2026/1.0 (public election news verification)"})
-raw=urllib.request.urlopen(req,timeout=20).read().decode("utf-8","replace")
-text=html.unescape(re.sub(r"<[^>]+>"," ",re.sub(r"<(script|style)\\b[^>]*>.*?</\\1>"," ",raw,flags=re.S|re.I)))
-text=re.sub(r"\\s+"," ",text)
-# Only a clearly matched sentence, and only when both candidates are explicitly named.
-out=[]
-for country in ["Japão","Austrália","Nova Zelândia","Coreia do Sul","China","Singapura","Taiwan","Filipinas"]:
-    for m in re.finditer(re.escape(country),text,re.I):
-        fragment=text[m.start():m.start()+260]
-        nums=re.findall(r"([0-9][0-9.]*) votos",fragment)
-        if len(nums)>=2 and ("Lula" in fragment or "Flávio" in fragment):
-            # Ambiguous ordering or duplicated snippets must not be treated as confirmed.
-            break
-# Keep source status but no guessed counts; source extraction requires explicit verification.
-data={"status":"needs_validation","source":URL,"checked_at":datetime.datetime.now(datetime.timezone.utc).isoformat(),"records":out,
-      "message":"Notícias consultadas; extração automática ainda não validada. Nenhum voto atribuído."}
-pathlib.Path("preliminares.json").write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+"""Poder360 preview collector. Publish only unambiguous paired country totals."""
+import datetime,json,pathlib,re,urllib.request,html
+SOURCE="https://www.poder360.com.br/poder-eleicoes/veja-como-foi-a-votacao-no-exterior-no-2o-turno-de-2026/"
+req=urllib.request.Request(SOURCE,headers={"User-Agent":"Mozilla/5.0 (compatible; ComparadorEleitoral2026/1.0)"})
+result={"source":"Poder360","source_url":SOURCE,"checked_at":datetime.datetime.now(datetime.timezone.utc).isoformat(),"status":"pending_validation","countries":[],"message":"Sem dados estruturados validados nesta consulta."}
+try:
+    with urllib.request.urlopen(req,timeout=25) as response:
+        page=response.read().decode("utf-8","replace")
+    result["status"]="source_reachable"
+    result["message"]="Página consultada; extração de totais por país ainda não validada. Nenhum voto publicado automaticamente."
+except Exception as e:
+    result["status"]="source_unavailable"
+    result["message"]="Não foi possível consultar a fonte. Dados anteriores devem ser identificados como desatualizados."
+pathlib.Path("preliminares.json").write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
