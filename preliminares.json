@@ -1,9 +1,9 @@
 {
   "source": "Poder360",
   "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/compare-as-votacoes-de-lula-e-flavio-no-1o-e-no-2o-turno-no-exterior/",
-  "checked_at": "2026-10-25T17:51:57.226851+00:00",
+  "checked_at": "2026-10-25T17:53:28.521061+00:00",
   "status": "ok",
-  "updated_at": "2026-10-25T17:51:57.226851+00:00",
+  "updated_at": "2026-10-25T17:53:28.521061+00:00",
   "countries": [
     {
       "country": "COREIA DO SUL",
@@ -15,8 +15,8 @@
         "lula": 148,
         "flavio": 82
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "CHINA",
@@ -28,8 +28,8 @@
         "lula": 502,
         "flavio": 267
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "TAIWAN",
@@ -41,8 +41,8 @@
         "lula": 94,
         "flavio": 130
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "FILIPINAS",
@@ -54,8 +54,8 @@
         "lula": 27,
         "flavio": 39
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "JAPÃO",
@@ -67,8 +67,8 @@
         "lula": 7098,
         "flavio": 28538
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "MALÁSIA",
@@ -80,8 +80,8 @@
         "lula": 41,
         "flavio": 44
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "AUSTRÁLIA",
@@ -93,8 +93,8 @@
         "lula": 6017,
         "flavio": 3465
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "NOVA ZELÂNDIA",
@@ -106,8 +106,8 @@
         "lula": 418,
         "flavio": 101
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "SINGAPURA",
@@ -119,8 +119,8 @@
         "lula": 213,
         "flavio": 121
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "INDONÉSIA",
@@ -132,8 +132,8 @@
         "lula": 15,
         "flavio": 23
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "TAILÂNDIA",
@@ -145,8 +145,8 @@
         "lula": 56,
         "flavio": 60
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "EMIRADOS ÁRABES UNIDOS",
@@ -158,8 +158,8 @@
         "lula": 643,
         "flavio": 772
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "ARÁBIA SAUDITA",
@@ -171,8 +171,8 @@
         "lula": 49,
         "flavio": 31
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "QATAR",
@@ -184,8 +184,8 @@
         "lula": 159,
         "flavio": 195
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "JORDÂNIA",
@@ -197,8 +197,8 @@
         "lula": 725,
         "flavio": 76
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "EGITO",
@@ -210,8 +210,8 @@
         "lula": 60,
         "flavio": 16
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "KUWAIT",
@@ -223,8 +223,8 @@
         "lula": 62,
         "flavio": 17
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "QUÊNIA",
@@ -236,8 +236,8 @@
         "lula": 29,
         "flavio": 16
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "SÍRIA",
@@ -249,8 +249,8 @@
         "lula": 106,
         "flavio": 11
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "ÁFRICA DO SUL",
@@ -262,8 +262,8 @@
         "lula": 186,
         "flavio": 256
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "CHIPRE",
@@ -275,8 +275,8 @@
         "lula": 29,
         "flavio": 25
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "ESTÔNIA",
@@ -288,8 +288,8 @@
         "lula": 160,
         "flavio": 33
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "FINLÂNDIA",
@@ -301,8 +301,8 @@
         "lula": 550,
         "flavio": 185
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "GRÉCIA",
@@ -314,8 +314,8 @@
         "lula": 255,
         "flavio": 331
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "MOÇAMBIQUE",
@@ -327,8 +327,8 @@
         "lula": 108,
         "flavio": 117
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "LÍBANO",
@@ -340,8 +340,8 @@
         "lula": 2736,
         "flavio": 1276
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "PALESTINA",
@@ -353,8 +353,8 @@
         "lula": 1000,
         "flavio": 46
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "ISRAEL",
@@ -366,8 +366,8 @@
         "lula": 166,
         "flavio": 699
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "CROÁCIA",
@@ -379,8 +379,8 @@
         "lula": 31,
         "flavio": 26
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "ESLOVÊNIA",
@@ -392,8 +392,8 @@
         "lula": 67,
         "flavio": 28
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "POLÔNIA",
@@ -405,8 +405,8 @@
         "lula": 268,
         "flavio": 89
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "REPÚBLICA TCHECA",
@@ -418,8 +418,8 @@
         "lula": 304,
         "flavio": 86
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "SÉRVIA",
@@ -431,8 +431,8 @@
         "lula": 35,
         "flavio": 13
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "ÁUSTRIA",
@@ -444,8 +444,8 @@
         "lula": 1178,
         "flavio": 393
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "SUÉCIA",
@@ -457,8 +457,8 @@
         "lula": 2127,
         "flavio": 591
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "NORUEGA",
@@ -470,8 +470,8 @@
         "lula": 304,
         "flavio": 86
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     },
     {
       "country": "DINAMARCA",
@@ -483,8 +483,8 @@
         "lula": 820,
         "flavio": 248
       },
-      "first_updated_at": "2026-10-25T17:51:57.226851+00:00",
-      "second_updated_at": "2026-10-25T17:51:57.226851+00:00"
+      "first_updated_at": "2026-10-25T17:53:28.521061+00:00",
+      "second_updated_at": "2026-10-25T17:53:28.521061+00:00"
     }
   ],
   "error": null
