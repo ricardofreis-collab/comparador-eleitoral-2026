@@ -16,3 +16,5 @@ body{max-width:1540px}.watch-layout{display:grid;grid-template-columns:minmax(0,
 .share-counts small span{display:block}
 .share-counts strong{grid-row:2;align-self:baseline;line-height:1.2;white-space:nowrap;font-size:clamp(1.4rem,3vw,1.85rem);font-variant-numeric:tabular-nums}
 .share-change{margin-top:18px}
+
+.states-table{min-width:1120px;font-variant-numeric:tabular-nums}.states-table thead th{text-align:center;background:#192a3e}.states-table tbody th{text-align:left;position:sticky;left:0;background:#111f30;z-index:1;min-width:130px}.states-table tbody tr:nth-child(even){background:#152438}.states-table tbody tr:nth-child(even) th{background:#152438}.states-table td{vertical-align:middle}.states-table td:last-child{white-space:normal;min-width:190px;font-size:.8rem}.states-table .state-up{color:#97dfbd;font-weight:700}.states-table .state-down{color:#ffb3ab;font-weight:700}.state-neutral{color:#afc0d4}.states-scroll{border-radius:10px}.state-explanation{padding:14px;border-left:3px solid #90baf2;background:#192a3e}.states-table thead tr:first-child th:first-child{position:sticky;left:0;z-index:2}
