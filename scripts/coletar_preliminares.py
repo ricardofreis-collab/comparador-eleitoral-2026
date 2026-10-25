@@ -6,11 +6,11 @@ import datetime,json,pathlib,re,urllib.request
 from bs4 import BeautifulSoup
 SOURCE="https://www.poder360.com.br/poder-eleicoes-2026/compare-as-votacoes-de-lula-e-flavio-no-1o-e-no-2o-turno-no-exterior/"
 def votes(block,candidate):
-    m=re.search(r"(?:Lula(?: \\(PT\\))?|Flávio(?: \\(PL\\))?)\\s*[–-]\\s*([\\d.]+)\\s*votos",block,re.I)
+    m=re.search(r"(?:Lula(?: \(PT\))?|Flávio(?: \(PL\))?)\s*[–-]\s*([\d.]+)\s*votos",block,re.I)
     return int(m.group(1).replace(".","")) if m else None
 def parse(text):
     # Country sections are separated by headings in article's textual extraction.
-    chunks=re.split(r"(?m)^([A-ZÁÉÍÓÚÂÊÔÃÕÇ* ]{3,45})\\s*$",text)
+    chunks=re.split(r"(?m)^([A-ZÁÉÍÓÚÂÊÔÃÕÇ* ]{3,45})\s*$",text)
     result=[]
     for i in range(1,len(chunks)-1,2):
         country=chunks[i].strip(" *")
@@ -18,8 +18,8 @@ def parse(text):
             s=chunks[i+1];parts=re.split(r"[12]º turno",s,flags=re.I)
             if len(parts)<3:continue
             def get(part,name):
-                pattern=(r"Lula(?: \\(PT\\))?" if name=="lula" else r"Flávio(?: \\(PL\\))?")
-                m=re.search(pattern+r"\\s*[–-]\\s*([\\d.]+)\\s*votos",part,re.I)
+                pattern=(r"Lula(?: \(PT\))?" if name=="lula" else r"Flávio(?: \(PL\))?")
+                m=re.search(pattern+r"\s*[–-]\s*([\d.]+)\s*votos",part,re.I)
                 return int(m.group(1).replace(".","")) if m else None
             a={x:get(parts[1],x) for x in ("lula","flavio")}
             b={x:get(parts[2],x) for x in ("lula","flavio")}
@@ -45,7 +45,7 @@ try:
         t=node.get_text(" ",strip=True)
         if t:lines.append(t)
     # Normalize country headings to standalone uppercase lines.
-    text="\\n".join(lines)
+    text="\n".join(lines)
     result["countries"]=parse(text)
     result["status"]="ok" if result["countries"] else "needs_validation"
 except Exception:
@@ -59,4 +59,4 @@ if path.exists() and not result["countries"]:
             result["countries"]=old["countries"]
             result["status"]="stale"
     except (ValueError,OSError):pass
-path.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\\n")
+path.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n")
