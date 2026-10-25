@@ -1,0 +1,13 @@
+const assert=require('node:assert/strict'),fs=require('node:fs');
+const {parseTSE,match,validateExterior}=require('../app.js');
+const first=parseTSE(JSON.parse(fs.readFileSync('tests/fixtures/tse-primeiro.json')),1);
+const second=parseTSE(JSON.parse(fs.readFileSync('tests/fixtures/tse-segundo.json')),2);
+assert.equal(first.sections,first.totalSections);assert.equal(second.sections,0);assert.equal(match([first],second),null);
+assert.equal(match([first],{...second,sections:second.totalSections}),first);
+assert.equal(match([first],{...second,sections:second.totalSections-1}),null);
+assert.equal(match([{...first,sections:1,totalSections:2}],{...second,sections:2,totalSections:4}).sections,1);
+const bad=JSON.parse(fs.readFileSync('tests/fixtures/tse-segundo.json'));delete bad.carg[0].agr[0].par[0].cand[0].vap;assert.throws(()=>parseTSE(bad,2));
+assert.throws(()=>parseTSE({...bad,t:'1'},2));
+const exterior=JSON.parse(fs.readFileSync('comparacao_exterior.json'));assert.equal(validateExterior(exterior).length,37);
+assert.throws(()=>validateExterior({countries:[{pais:'X',primeiro:{lula:null,flavio:0},segundo:{lula:1,flavio:2}}]}));
+console.log('9 verificações JS aprovadas: JSON real, ausência, percentuais, candidatos e exterior');

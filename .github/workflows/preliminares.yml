@@ -5,20 +5,30 @@ on:
     - cron: '*/5 * * * *'
 permissions:
   contents: write
+concurrency:
+  group: coleta-preliminares
+  cancel-in-progress: false
 jobs:
   consult:
     runs-on: ubuntu-latest
+    timeout-minutes: 4
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: pip install beautifulsoup4
-      - run: python scripts/coletar_preliminares.py
+      - run: pip install -r requirements.txt
+      - run: python -m unittest discover -s tests -v
+      - id: collect
+        continue-on-error: true
+        run: python scripts/coletar_preliminares.py
       - run: python scripts/comparar_paises.py
-      - name: Registrar estado da consulta
+      - name: Registrar dados sem publicar no Render
         run: |
           git config user.name "comparador-bot"
           git config user.email "comparador-bot@users.noreply.github.com"
           git add preliminares.json comparacao_exterior.json
-          git diff --cached --quiet || (git commit -m "Registrar consulta preliminar" && git push)
+          git diff --cached --quiet || (git commit -m "Atualizar resultados preliminares [skip render]" && git push)
+      - name: Sinalizar falha de coleta
+        if: steps.collect.outcome == 'failure'
+        run: exit 1
