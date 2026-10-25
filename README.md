@@ -33,3 +33,7 @@ Validação nesta sessão: coleta real e workflow concluídos com sucesso; arqui
 ## Transmissão incorporada
 
 CNN Brasil: vídeo `o6Z6Ax_XVsY`, identificado na página oficial https://www.cnnbrasil.com.br/ em 25/10/2026. Player oficial do YouTube em domínio nocookie, com áudio inicialmente desativado, controles e tela cheia. Em telas largas aparece ao lado dos resultados; em telas menores, acima deles. A atualização dos votos não recarrega o iframe. Caso a emissora encerre ou restrinja a live, o painel oferece links para o vídeo, a página ao vivo e o canal oficial. Não há retransmissão nem cópia do sinal.
+
+## Participação no exterior
+
+Percentuais comparam Lula/(Lula+Flávio) e Flávio/(Lula+Flávio), sempre nos países com os dois turnos. Outros candidatos do primeiro turno não estão no denominador. A variação é calculada antes do arredondamento e exibida em pontos percentuais, com duas casas decimais. Somar 100% entre os dois não indica apuração completa; a reportagem não fornece cobertura consolidada do exterior. Países novos atualizam simultaneamente a base dos dois turnos. Base sem votos é indisponível, não 0%.

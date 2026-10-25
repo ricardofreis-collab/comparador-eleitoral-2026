@@ -11,3 +11,14 @@ assert.throws(()=>parseTSE({...bad,t:'1'},2));
 const exterior=JSON.parse(fs.readFileSync('tests/fixtures/exterior.json'));assert.equal(validateExterior(exterior).length,37);
 assert.throws(()=>validateExterior({countries:[{pais:'X',primeiro:{lula:null,flavio:0},segundo:{lula:1,flavio:2}}]}));
 console.log('9 verificações JS aprovadas: JSON real, ausência, percentuais, candidatos e exterior');
+
+const {voteShare}=require('../app.js');
+assert.equal(voteShare(null,10),null);
+assert.equal(voteShare(0,0),null);
+assert.deepEqual(voteShare(0,10),{lula:0,flavio:100});
+assert.deepEqual(voteShare(25,75),{lula:25,flavio:75});
+assert.throws(()=>voteShare(-1,10));
+const before=voteShare(40,60),after=voteShare(55,45);
+assert.equal(after.lula-before.lula,15);
+assert.equal(after.flavio-before.flavio,-15);
+console.log('Participação verificada: base, ausência, zero publicado, ganho e perda em pontos percentuais');

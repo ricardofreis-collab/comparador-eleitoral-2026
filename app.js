@@ -32,7 +32,14 @@ function validateExterior(d) {
   }
   return d.countries;
 }
-const api={integer,parseTSE,match,validateExterior};
+function voteShare(lula, flavio) {
+  if (lula == null || flavio == null) return null;
+  integer(lula); integer(flavio);
+  const total = lula + flavio;
+  if (!Number.isSafeInteger(total) || total === 0) return null;
+  return {lula: 100 * lula / total, flavio: 100 * flavio / total};
+}
+const api={integer,parseTSE,match,validateExterior,voteShare};
 if(typeof module !== 'undefined') module.exports=api;
 root.Election=api;
 if(typeof document==='undefined') return;
@@ -43,6 +50,21 @@ function chart(id,a,b){
  if(a==null||b==null){host.textContent='Aguardando resultados comparáveis';return;}
  const max=Math.max(Math.abs(a),Math.abs(b),1);
  [a,b].forEach((v,i)=>{const row=document.createElement('div');row.className='bar-row';const label=document.createElement('span');label.textContent=(i?'Flávio Bolsonaro: ':'Lula: ')+signed(v)+' votos';row.append(label);const track=document.createElement('div');track.className='track';const bar=document.createElement('div');bar.className='bar '+(v<0?'loss':'gain');bar.style.width=Math.abs(v)/max*50+'%';bar.style.marginLeft=(v<0?50-Math.abs(v)/max*50:50)+'%';track.append(bar);row.append(track);host.append(row);});
+}
+const percent=n=>n==null?'—':n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'%';
+const points=n=>(n>0?'+':'')+n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+' p.p.';
+function showParticipation(sums, count) {
+  const first=voteShare(sums.primeirolula,sums.primeiroflavio), second=voteShare(sums.segundolula,sums.segundoflavio);
+  for(const [i,share] of [first,second].entries()) {
+    for(const k of candidates) $('ex-'+k+'-share'+(i+1)).textContent=percent(share?.[k]);
+    const host=$('ex-share-bar'+(i+1));host.replaceChildren();
+    if(!share){host.textContent='Aguardando votos disponíveis';$('ex-share-label'+(i+1)).textContent='Aguardando percentuais';continue;}
+    for(const k of candidates){const segment=document.createElement('div');segment.className='share-segment share-'+k;segment.style.width=share[k]+'%';host.append(segment);}
+    $('ex-share-label'+(i+1)).textContent='Lula '+percent(share.lula)+' · Flávio '+percent(share.flavio);
+  }
+  for(const k of candidates) $('ex-'+k+'-pp').textContent=first&&second?points(second[k]-first[k]):'Aguardando os dois turnos';
+  const delta=first&&second?second.lula-first.lula:null;
+  $('ex-share-summary').textContent=delta==null?'Aguardando votos comparáveis nos dois turnos.':Math.abs(delta)<0.005?'Sem mudança de participação na precisão de 0,01 ponto percentual.':(delta>0?'Lula':'Flávio Bolsonaro')+' ganhou '+points(Math.abs(delta)).replace('+','')+' de participação entre os dois candidatos, nos mesmos '+count+' países.';
 }
 let exteriorBusy=false;
 async function exterior(){
@@ -56,6 +78,7 @@ async function exterior(){
   $('ex-note').textContent='Somente países com os dois turnos entram nas somas. '+(d.pending_countries||0)+' países aguardando par completo. Valores reproduzem a reportagem preliminar e podem ser corrigidos pela fonte.';
   const sums={};for(const t of ['primeiro','segundo']) for(const k of candidates)sums[t+k]=rows.length?rows.reduce((s,c)=>s+c[t][k],0):null;
   for(const [i,t] of ['primeiro','segundo'].entries()) for(const k of candidates)$('ex-'+k+(i+1)).textContent=fmt(sums[t+k]);
+  showParticipation(sums, rows.length);
   const dl=rows.length?sums.segundolula-sums.primeirolula:null,df=rows.length?sums.segundoflavio-sums.primeiroflavio:null;
   $('ex-lula-delta').textContent=dl==null?'Aguardando dados':signed(dl)+' votos';$('ex-flavio-delta').textContent=df==null?'Aguardando dados':signed(df)+' votos';chart('ex-chart',dl,df);
   const body=$('countries');body.replaceChildren();for(const c of rows){const tr=document.createElement('tr');for(const v of [c.pais,c.primeiro.lula,c.segundo.lula,c.segundo.lula-c.primeiro.lula,c.primeiro.flavio,c.segundo.flavio,c.segundo.flavio-c.primeiro.flavio]){const td=document.createElement('td');td.textContent=typeof v==='number'?fmt(v):v;tr.append(td);}body.append(tr);}
