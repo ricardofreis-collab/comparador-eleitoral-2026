@@ -3,4 +3,23 @@ const URLS=['https://resultados.tse.jus.br/oficial/ele2026/6258/dados/br/br-c000
 function parse(d){let arr=d.cand||d.abr?.[0]?.cand;if(!Array.isArray(arr))throw Error('Estrutura JSON não reconhecida');let a=arr.find(x=>String(x.n||x.nr)==='13'),b=arr.find(x=>String(x.n||x.nr)==='22');if(!a||!b)throw Error('Candidatos não encontrados');let l=Number(a.vap),f=Number(b.vap),p=Number(d.psi);if(![l,f,p].every(Number.isFinite)||p<0||p>100)throw Error('Valores não validados');return {l,f,p,t:new Date().toLocaleTimeString('pt-BR')}}
 function graph(){let c=$('chart'),ctx=c.getContext('2d');ctx.clearRect(0,0,c.width,c.height);ctx.fillStyle='#b3c4d8';ctx.font='17px system-ui';ctx.fillText('Aguardando dados comparáveis dos dois turnos',18,95);ctx.font='13px system-ui';ctx.fillText('Nenhuma diferença de votos será estimada.',18,124)}
 async function load(){try{let r=await fetch(URLS[0],{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);let x=parse(await r.json());$('status').textContent='Total nacional oficial — '+x.p.toFixed(2)+'% das seções';$('updated').textContent='Última consulta: '+new Date().toLocaleString('pt-BR');$('scope').textContent='Brasil inteiro — 2º turno';$('l2').textContent=fmt(x.l);$('f2').textContent=fmt(x.f);$('l1').textContent='—';$('f1').textContent='—';$('ld').textContent='Histórico equivalente do 1º turno pendente';$('fd').textContent='Histórico equivalente do 1º turno pendente';$('lead').textContent='Comparação por mesmo percentual de seções será ativada após importar histórico do 1º turno';if(!samples.length||samples.at(-1).l!==x.l||samples.at(-1).f!==x.f){samples.push(x);samples=samples.slice(-60)}$('rows').innerHTML=samples.slice(-10).reverse().map(x=>'<tr><td>'+x.t+'</td><td>'+x.p.toFixed(2)+'%</td><td>'+fmt(x.l)+'</td><td>'+fmt(x.f)+'</td></tr>').join('');graph()}catch(e){$('status').textContent='Prévia parcial • JSON oficial ainda não validado';$('updated').textContent='Não foi possível validar JSON do TSE: '+e.message+'. O navegador pode bloquear acesso direto (CORS).'}}graph();load();setInterval(load,30000);
+</script><script>
+async function preliminary(){
+try{
+const r=await fetch('preliminares.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('Sem arquivo');
+const d=await r.json();if(!Array.isArray(d.countries)||!d.countries.length){$('gainstatus').textContent='Aguardando primeira coleta validada';return}
+const sum=(round,key)=>d.countries.reduce((s,x)=>s+x[round][key],0);
+const l1=sum('first','lula'),l2=sum('second','lula'),f1=sum('first','flavio'),f2=sum('second','flavio');
+const fmt=n=>n.toLocaleString('pt-BR');
+$('scope').textContent='Exterior — '+d.countries.length+' países comparáveis';
+$('l1').textContent=fmt(l1);$('l2').textContent=fmt(l2);$('f1').textContent=fmt(f1);$('f2').textContent=fmt(f2);
+const dl=l2-l1,df=f2-f1;$('ld').textContent=(dl>=0?'+':'')+fmt(dl)+' votos';$('fd').textContent=(df>=0?'+':'')+fmt(df)+' votos';
+$('lead').textContent=dl===df?'Mesmo ganho absoluto':(dl>df?'Lula':'Flávio')+' ganhou '+fmt(Math.abs(dl-df))+' votos adicionais a mais';
+$('gainstatus').textContent='Votos adicionais • '+d.countries.length+' países • '+(d.status==='stale'?'dados anteriores preservados':'fonte Poder360');
+const canvas=$('chart'),ctx=canvas.getContext('2d');ctx.clearRect(0,0,canvas.width,canvas.height);
+const vals=[dl,df],max=Math.max(...vals.map(Math.abs),1);ctx.font='17px system-ui';
+vals.forEach((v,i)=>{let y=50+i*90;ctx.fillStyle='#eef2fa';ctx.fillText((i?'Flávio':'Lula')+' '+(v>=0?'+':'')+fmt(v),12,y);ctx.fillStyle=i?'#ffbe78':'#76c9ff';ctx.fillRect(12,y+12,Math.round(Math.abs(v)/max*700),27)});
+}catch(e){$('gainstatus').textContent='Coleta preliminar ainda não disponível'}
+}
+preliminary();setInterval(preliminary,30000);
 </script></html>
