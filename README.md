@@ -29,3 +29,7 @@ Fixtures são trechos reais da reportagem e JSON do TSE obtidos em 25/10/2026. O
 Hospedagem: site estático existente no Render; deploy manual, automático desligado. Nenhum novo serviço, banco ou plano pago é necessário. GitHub Actions com agenda de cinco minutos não oferece SLA de pontualidade. Não foram configurados gastos adicionais.
 
 Validação nesta sessão: coleta real e workflow concluídos com sucesso; arquivos publicados e execução do JavaScript publicado verificados por HTTP e DOM de teste. Testes visuais no Safari, iPhone e Mac reais permanecem pendentes por falta de acesso a esses dispositivos.
+
+## Transmissão incorporada
+
+CNN Brasil: vídeo `o6Z6Ax_XVsY`, identificado na página oficial https://www.cnnbrasil.com.br/ em 25/10/2026. Player oficial do YouTube em domínio nocookie, com áudio inicialmente desativado, controles e tela cheia. Em telas largas aparece ao lado dos resultados; em telas menores, acima deles. A atualização dos votos não recarrega o iframe. Caso a emissora encerre ou restrinja a live, o painel oferece links para o vídeo, a página ao vivo e o canal oficial. Não há retransmissão nem cópia do sinal.
